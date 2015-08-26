@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+
+require('tempfile')
+
+puts "This is git-vim"
+
+if (ARGV.size == 0)
+  puts "I have nothing to do"
+  exit
+end
+filename = ARGV.shift()
+
+branchname = `git rev-parse --abbrev-ref HEAD`
+ticketNum = /\d\d\d\d/.match(branchname)
+ticketNum = if ticketNum==nil then nil else ticketNum[0] end
+
+firstLine = File.open(filename).first
+
+willPrepend = true
+if (!firstLine.strip.empty?) 
+  puts "This commit is already filled out with '#{firstLine}'"
+  willPrepend = false
+end
+if (ticketNum == nil)
+  puts 'Could not find ticket number in branch name'
+  willPrepend = false
+end
+
+if (willPrepend)
+  puts 'I am prepending your ticket number for you'
+
+  prefix = "UC-#{ticketNum}: "
+
+  prefixFile = Tempfile.new('prefix')
+  prefixFile.write(prefix)
+  prefixFile.close
+  puts prefixFile.path
+
+  exec("vim #{filename} -c '0read #{prefixFile.path}' -c startinsert! ")
+
+  prefixFile.unlink
+else
+  exec("vim #{filename} -c startinsert! ")
+end
