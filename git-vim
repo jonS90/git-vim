@@ -18,7 +18,7 @@ firstLine = File.open(filename).first
 
 willPrepend = true
 if (!firstLine.strip.empty?) 
-  puts "This commit is already filled out with '#{firstLine}'"
+  puts "This commit is already filled out with '#{firstLine.strip}'"
   willPrepend = false
 end
 if (ticketNum == nil)
