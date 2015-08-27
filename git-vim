@@ -34,11 +34,12 @@ if (willPrepend)
   prefixFile = Tempfile.new('prefix')
   prefixFile.write(prefix)
   prefixFile.close
-  puts prefixFile.path
+  puts "Made temp file: #{prefixFile.path}"
 
   exec("vim #{filename} -c '0read #{prefixFile.path}' -c startinsert! ")
 
   prefixFile.unlink
+  puts "Anything after exec() will not get executed"
 else
   exec("vim #{filename} ")
 end
