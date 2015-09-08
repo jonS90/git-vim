@@ -38,7 +38,7 @@ if (willPrepend)
   prefixFile.close
   puts "Made temp file: #{prefixFile.path}"
 
-  exec("vim #{filename} -c '0read #{prefixFile.path}' -c startinsert! ")
+  exec("vim #{filename} -c '0read #{prefixFile.path}' ")
 
   prefixFile.unlink
   puts "Anything after exec() will not get executed"
