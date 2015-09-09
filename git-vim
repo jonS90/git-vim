@@ -22,10 +22,14 @@ willPrepend = true
 if (!firstLine.strip.empty?) 
   puts "This commit is already filled out with '#{firstLine.strip}'"
   willPrepend = false
+  exec("vim #{filename}")
+  # exit
 end
 if (ticketNum == nil)
   puts 'Could not find ticket number in branch name'
   willPrepend = false
+  exec("vim #{filename} -c startinsert! ")
+  # exit
 end
 
 if (willPrepend)
@@ -42,6 +46,4 @@ if (willPrepend)
 
   prefixFile.unlink
   puts "Anything after exec() will not get executed"
-else
-  exec("vim #{filename} -c startinsert! ")
 end
