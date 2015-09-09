@@ -43,5 +43,5 @@ if (willPrepend)
   prefixFile.unlink
   puts "Anything after exec() will not get executed"
 else
-  exec("vim #{filename} ")
+  exec("vim #{filename} -c startinsert! ")
 end
