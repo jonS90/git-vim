@@ -13,7 +13,7 @@ end
 filename = ARGV.shift()
 
 branchname = `git rev-parse --abbrev-ref HEAD`
-ticketNum = /\d\d\d\d/.match(branchname)
+ticketNum = /\d\d\d+/.match(branchname)
 ticketNum = if ticketNum==nil then nil else ticketNum[0] end
 
 firstLine = File.open(filename).first
