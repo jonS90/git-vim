@@ -1,6 +1,12 @@
-If the current branch name contains a ticket number, `git-vim` will automatically prepend it to new commit messages.
+`git-vim` is a `vim` launcher. Use `git-vim` as your commit editor, and it will
+automatically prepend stuff to your new commit messages, so you're not typing
+the same thing over and over again.
 
-Tested on mac and "theoretically" working on linux.
+Much of the time, `git-vim` will simply launch vim. However, if `git-vim` sees
+a number in your current branch name, it will prepend it to your new commit
+messages before launching `vim`.
+
+Supported on Mac and Linux.
 
 # Installation
 
