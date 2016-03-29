@@ -24,3 +24,16 @@ Tested on mac and "theoretically" working on linux.
   </pre>
 
 Now you're set up to use `git-vim`.
+
+# Configuring the commit prefix
+
+You can configure different repostories to use different commit prefixes. To do
+so, `cd` into the repo and set the editor.
+
+<pre>
+git config core.editor 'path/to/git-vim "custom prefix %t: "'
+</pre>
+
+Whenever `git-vim` sees a ticket number in a branch, it will prepend new commit
+messages with `custom prefix %t: `, substituting `%t` with the actual ticket
+number.
