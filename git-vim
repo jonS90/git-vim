@@ -2,13 +2,16 @@
 
 require('tempfile')
 
-prefix = "UC-%t: "
+prefix = "%t: "
 
 puts "This is git-vim"
 
 if (ARGV.size == 0)
   puts "I have nothing to do"
   exit
+end
+if (ARGV.size == 2)
+  prefix = ARGV.shift.dup
 end
 filename = ARGV.shift()
 
