@@ -8,7 +8,7 @@ Tested on mac and "theoretically" working on linux.
 
   <pre>
     cd &lt;somewhere&gt;
-    curl https://raw.githubusercontent.com/jonS90/git-vim/master/git-vim > git-vim
+    curl https://raw.githubusercontent.com/jonsmithers/git-vim/master/git-vim > git-vim
   </pre>
 
 2. Make `git-vim` executable 
