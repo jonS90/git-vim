@@ -2,9 +2,15 @@
 
 require('tempfile')
 
-prefix = "%t: "
+class String
+def yellow; "\e[33m#{self}\e[0m" end
+def gray;   "\e[37m#{self}\e[0m" end
+end
 
 puts "This is git-vim"
+
+# default prefix
+prefix = "%t: "
 
 if (ARGV.size == 0)
   puts "I have nothing to do"
@@ -12,6 +18,11 @@ if (ARGV.size == 0)
 end
 if (ARGV.size == 2)
   prefix = ARGV.shift.dup
+else
+  puts "# You haven't configured git-vim's prefix. Configure it like so:".yellow
+  puts "#".yellow
+  puts "#   git config core.editor '#{$0} \"ABCD-%t: \"'".yellow
+  puts "#".yellow
 end
 filename = ARGV.shift()
 
